@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public abstract class AbstractOpenAiCodeReviewService implements IOpenAiCodeReviewService {
 
+    // 创建日志记录器，用于记录程序运行信息
     private final Logger logger = LoggerFactory.getLogger(AbstractOpenAiCodeReviewService.class);
 
     protected final GitCommand gitCommand;

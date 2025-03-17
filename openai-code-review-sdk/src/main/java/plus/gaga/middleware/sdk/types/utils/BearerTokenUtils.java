@@ -1,14 +1,22 @@
 package plus.gaga.middleware.sdk.types.utils;
 
+// jwt， 用于创建和签名 JWT令牌
 import com.auth0.jwt.JWT;
+// 算法，用于指定签名算法
 import com.auth0.jwt.algorithms.Algorithm;
+// 缓存服务，用于缓存生成的token
 import com.google.common.cache.Cache;
+// 缓存构建器, 用于配置缓存参数
 import com.google.common.cache.CacheBuilder;
 
+// java 标准字符集，用于字节编码
 import java.nio.charset.StandardCharsets;
+// java 时间工具类，用于获取当前时间
 import java.util.Calendar;
+// java 集合工具类，用于创建存储jwt的payload和header
 import java.util.HashMap;
 import java.util.Map;
+// java 并发工具类，用于设置缓存过期时间
 import java.util.concurrent.TimeUnit;
 
 public class BearerTokenUtils {
@@ -17,6 +25,7 @@ public class BearerTokenUtils {
     private static final long expireMillis = 30 * 60 * 1000L;
 
     // 缓存服务
+    // 创建Token缓存，设置缓存项在写入后29分钟过期（比Token实际过期时间提前1分钟）
     public static Cache<String, String> cache = CacheBuilder.newBuilder()
             .expireAfterWrite(expireMillis - (60 * 1000L), TimeUnit.MILLISECONDS)
             .build();

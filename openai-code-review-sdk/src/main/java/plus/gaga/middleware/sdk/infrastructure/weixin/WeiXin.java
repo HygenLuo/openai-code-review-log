@@ -34,13 +34,19 @@ public class WeiXin {
         this.template_id = template_id;
     }
 
+    // 发送模板消息
     public void sendTemplateMessage(String logUrl, Map<String, Map<String, String>> data) throws Exception {
+        // 获取微信access_token， 用于API调用验证
         String accessToken = WXAccessTokenUtils.getAccessToken(appid, secret);
 
+        // 构造模板消息DTO对象， 并设置接收用户和模板ID
         TemplateMessageDTO templateMessageDTO = new TemplateMessageDTO(touser, template_id);
+        // 设置点击消息后的跳转链接
         templateMessageDTO.setUrl(logUrl);
+        // 设置模板数据
         templateMessageDTO.setData(data);
 
+        // 创建微信模板消息API的URL， 附带accessToken参数
         URL url = new URL(String.format("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=%s", accessToken));
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
@@ -48,11 +54,13 @@ public class WeiXin {
         conn.setRequestProperty("Accept", "application/json");
         conn.setDoOutput(true);
 
+        // 使用try-with-resources自动关闭输出流
         try (OutputStream os = conn.getOutputStream()) {
             byte[] input = JSON.toJSONString(templateMessageDTO).getBytes(StandardCharsets.UTF_8);
             os.write(input, 0, input.length);
         }
 
+        // 使用try-with-resources自动关闭输入流
         try (Scanner scanner = new Scanner(conn.getInputStream(), StandardCharsets.UTF_8.name())) {
             String response = scanner.useDelimiter("\\A").next();
             logger.info("openai-code-review weixin template message! {}", response);
