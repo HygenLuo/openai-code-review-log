@@ -24,10 +24,10 @@ public class OpenAiCodeReview {
     private static final Logger logger = LoggerFactory.getLogger(OpenAiCodeReview.class);
 
     // 配置配置
-    private String weixin_appid = "wx5a228ff69e28a91f"; // 微信公众号appid
-    private String weixin_secret = "0bea03aa1310bac050aae79dd8703928"; // 微信公众号secret
-    private String weixin_touser = "or0Ab6ivwmypESVp_bYuk92T6SvU"; // 接收信息的用户OpenID
-    private String weixin_template_id = "l2HTkntHB71R4NQTW77UkcqvSOIFqE_bss1DAVQSybc"; // 发送的模板ID
+    private String weixin_appid = "wx7500895aaa3d7dbb"; // 微信公众号appid
+    private String weixin_secret = "b4baaf7b02332c355176fb3b199a2f75"; // 微信公众号secret
+    private String weixin_touser = "oxI2o6m3kXmiLuNeNlsTH79rzwFw"; // 接收信息的用户OpenID
+    private String weixin_template_id = "\tyyWShOfZKEhnVCrimWqUA5DPOBSG_Huu73JCj2BF4iU"; // 发送的模板ID
 
     // ChatGLM 配置
     private String chatglm_apiHost = "https://open.bigmodel.cn/api/paas/v4/chat/completions"; // ChatGLM API地址
