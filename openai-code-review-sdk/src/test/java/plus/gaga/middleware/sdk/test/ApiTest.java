@@ -19,15 +19,16 @@ import java.util.Scanner;
 public class ApiTest {
 
     public static void main(String[] args) {
-        String apiKeySecret = "c78fbacd3e10118ad5649d7a54a3a163.UunYDBxpzeClvSKZ";
+        String apiKeySecret = "73cfe963093e4cd6b481eb1a20fcf5cc.atyYB2M3EFI0Nf97";
         String token = BearerTokenUtils.getToken(apiKeySecret);
         System.out.println(token);
     }
 
     @Test
     public void test_http() throws IOException {
-        String apiKeySecret = "c78fbacd3e10118ad5649d7a54a3a163.UunYDBxpzeClvSKZ";
+        String apiKeySecret = "73cfe963093e4cd6b481eb1a20fcf5cc.atyYB2M3EFI0Nf97";
         String token = BearerTokenUtils.getToken(apiKeySecret);
+        System.out.println(token);
 
         URL url = new URL("https://open.bigmodel.cn/api/paas/v4/chat/completions");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
